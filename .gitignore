@@ -1,0 +1,23 @@
+# Rust
+**/parser/target/**
+Cargo.lock
+
+# Nix
+result
+result-*
+.direnv/
+
+# General
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Temporary files
+*.tmp
+*.temp

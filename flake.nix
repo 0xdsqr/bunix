@@ -12,21 +12,23 @@
       let
         pkgs-unstable = import nixpkgs-unstable { inherit system; };
         pkgs-stable = import nixpkgs-stable { inherit system; };
-      in {
-        devShells.default = nixpkgs-stable.mkShell {
-            buildInputs = with pkgs-stable; [
-                # For Nix development
-                nixfmt
-                nix-linter
-                
-                # For Rust development
-                cargo
-                rustc
-            ];
 
-        shellHook = ''
-            echo "🟪 Bun development environment ready"
+        # import the library
+        bunixLib = import ./lib { pkgs = pkgs-stable; };
+      in {
+        # export the library
+        lib = bunixLib;
+        
+        devShells.default = pkgs-stable.mkShell {
+          buildInputs = with pkgs-stable; [
+            nixfmt
+            cargo
+            rustc
+          ];
+          
+          shellHook = ''
+            echo "🟪 bunix development environment ready"
           '';
-        }
-});
+        };
+      });
 }

@@ -1,7 +1,13 @@
 { pkgs }:
 
 {
-  buildBunPackage = { src, ... }@args:
+  buildBunPackage = { 
+    src,
+    workspace ? null, # if provided i am treating as a monorepo otherwise a ployrepo
+    pname ? null,
+    version ? "0.1.0",
+    ... 
+  }@args:
     pkgs.stdenv.mkDerivation {
       name = "bunix";
       inherit src;

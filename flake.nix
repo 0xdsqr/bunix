@@ -24,6 +24,7 @@
             nixfmt
             cargo
             rustc
+            rustfmt
           ];
           
           shellHook = ''

@@ -21,3 +21,5 @@ result-*
 # Temporary files
 *.tmp
 *.temp
+
+target
